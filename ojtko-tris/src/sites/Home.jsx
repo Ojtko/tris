@@ -1,9 +1,10 @@
-import './../styles/Home.css'
+import './../styles/Home.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const nickName = "Ojtko2115"
+  const nickName = localStorage.getItem('userNickname') || "gość";
+
   return (
     <>
       <nav className="navbar">
@@ -36,7 +37,6 @@ function Home() {
               <div className="skin-thumbnail">Skin 7</div>
               <div className="skin-thumbnail">Skin 8</div>
               <div className="skin-thumbnail">Skin 9</div>
-
             </div>
           </div>
           <div className="col-md-6 right-side">
@@ -46,7 +46,7 @@ function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Home;
