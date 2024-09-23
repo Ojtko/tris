@@ -40,6 +40,9 @@ function Login() {
 
   return (
     <>
+      <Link to="/">
+        <button className="btn btn-outline-light position-fixed powrot">Powrót</button>
+      </Link>
       <div className="d-flex vh-100 justify-content-center align-items-center">
         <div className="square-div">
           <div className="title mb-4">Zaloguj się</div>

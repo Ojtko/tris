@@ -17,3 +17,8 @@ input.form-control:focus {
 .register {
     color: #333 !important;
 }
+.powrot{
+    border-color: #ddd;
+    color: #ddd;
+    margin:20px;
+}

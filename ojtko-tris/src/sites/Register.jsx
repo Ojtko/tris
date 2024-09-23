@@ -34,50 +34,55 @@ function Register() {
   };
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center">
-      <div className="square-div">
-        <div className="title mb-4">Utwórz konto</div>
-        <form className="mb-3" onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="nick" className="form-label">Nick</label>
-            <input
-              type="text"
-              id="nick"
-              className="form-control"
-              placeholder="Wprowadź nick"
-              value={nick}
-              onChange={(e) => setNick(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
-            <input
-              type="email"
-              id="email"
-              className="form-control"
-              placeholder="Wprowadź email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">Hasło</label>
-            <input
-              type="password"
-              id="password"
-              className="form-control"
-              placeholder="Wprowadź hasło"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-dark">Zarejestruj</button>
-        </form>
+    <>
+    <Link to="https://www.ala-ma-igora.pl/">
+        <button className="btn btn-outline-light position-fixed powrot">Powrót</button>
+      </Link>
+      <div className="d-flex vh-100 justify-content-center align-items-center">
+        <div className="square-div">
+          <div className="title mb-4">Utwórz konto</div>
+          <form className="mb-3" onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="nick" className="form-label">Nick</label>
+              <input
+                type="text"
+                id="nick"
+                className="form-control"
+                placeholder="Wprowadź nick"
+                value={nick}
+                onChange={(e) => setNick(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                className="form-control"
+                placeholder="Wprowadź email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Hasło</label>
+              <input
+                type="password"
+                id="password"
+                className="form-control"
+                placeholder="Wprowadź hasło"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-dark">Zarejestruj</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
