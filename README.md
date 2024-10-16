@@ -1,3 +1,1 @@
-# tris
-
-Projekt 3 przyjaciol z bonusami ktorzy lubia kulka i skrzyzwane paly
+wyobraź sobie, że w każdym mieście na świecie istnieje ukryty ogród, do którego dostęp mają tylko nieliczni. Każdy z tych ogrodów ma swoje unikalne rośliny i zwierzęta, które potrafią rozmawiać z ludźmi, dzieląc się mądrością i opowieściami z przeszłości. Aby znaleźć taki ogród, trzeba rozwiązać tajemniczą zagadkę, która prowadzi przez różne zakątki miasta. Jakie tajemnice kryją się w Twoim mieście? Jakie historie mogłyby opowiedzieć te magiczne istoty?
