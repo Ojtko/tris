@@ -1,0 +1,51 @@
+.tic-tac-toe-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 5px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.cell.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#timer {
+  margin-top: 10px;
+  font-size: 16px;
+  color: red;
+}

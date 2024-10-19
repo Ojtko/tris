@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import './../styles/Login.css';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./../styles/Login.css";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
-  const [nick, setNick] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [nick, setNick] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,10 +13,10 @@ function Register() {
 
     const userData = { nick, email, password };
     try {
-      const response = await fetch('http://localhost:5000/register', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
       });
@@ -24,26 +24,30 @@ function Register() {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        navigate('/');
+        navigate("/");
       } else {
-        console.error('Failed to register');
+        console.error("Failed to register");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   return (
     <>
-    <Link to="https://www.ala-ma-igora.pl/">
-        <button className="btn btn-outline-light position-fixed powrot">Powrót</button>
+      <Link to="https://www.ala-ma-igora.pl/">
+        <button className="btn btn-outline-light position-fixed powrot">
+          Powrót
+        </button>
       </Link>
       <div className="d-flex vh-100 justify-content-center align-items-center">
         <div className="square-div">
           <div className="title mb-4">Utwórz konto</div>
           <form className="mb-3" onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="nick" className="form-label">Nick</label>
+              <label htmlFor="nick" className="form-label">
+                Nick
+              </label>
               <input
                 type="text"
                 id="nick"
@@ -55,7 +59,9 @@ function Register() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -67,7 +73,9 @@ function Register() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">Hasło</label>
+              <label htmlFor="password" className="form-label">
+                Hasło
+              </label>
               <input
                 type="password"
                 id="password"
@@ -78,7 +86,9 @@ function Register() {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-dark">Zarejestruj</button>
+            <button type="submit" className="btn btn-dark">
+              Zarejestruj
+            </button>
           </form>
         </div>
       </div>

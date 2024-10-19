@@ -1,24 +1,78 @@
-.square-div {
-    width: 500px;
-    height: 600px;
-    background-color: #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    color:#333;
-    padding: 40px;
-}
-.title{
-    font-size: 36px;
-}
-input.form-control:focus {
-    border-color: #222228 !important;
-    box-shadow: 0 0 0 0.25rem rgba(51, 51, 51, 0.3) !important;
-}
-.register {
-    color: #333 !important;
-}
-.powrot{
-    border-color: #ddd;
+body {
+    background-color: #2a2a2c;
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
     color: #ddd;
-    margin:20px;
-}
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .square-div {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #ddd;
+  }
+  
+  .form-label {
+    font-size: 18px;
+    color: #ddd;
+  }
+  
+  .form-control {
+    background-color: #444;
+    color: #ddd;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .form-control::placeholder {
+    color: #aaa;
+  }
+  
+  .form-control:focus {
+    border-color: #666;
+    box-shadow: none;
+  }
+  
+  .btn-dark {
+    background-color: #19191d;
+    color: #ddd;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-dark:hover {
+    background-color: #333;
+  }
+  
+  .btn-link {
+    color: #bbb;
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  
+  .powrot {
+    top: 10px;
+    left: 10px;
+  }
+  

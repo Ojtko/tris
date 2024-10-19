@@ -1,8 +1,28 @@
 body {
-  background-color: #2a2a2c;
+  background: linear-gradient(135deg, #2a2a2c, #1a1a1d);
   overflow-x: hidden;
   font-family: "Bangers", system-ui;
   font-weight: 400;
   font-style: normal;
   color: #ddd;
+  transition: background 0.5s ease-in-out;
+}
+
+h2,
+.navbar-text {
+  font-family: "Bangers", system-ui;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animated-element {
+  animation: fadeIn 1s ease-in-out forwards;
 }
