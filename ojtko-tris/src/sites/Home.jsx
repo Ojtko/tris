@@ -2,6 +2,8 @@ import "./../styles/Home.css";
 import "animate.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Canvas } from '@react-three/fiber';
+import Model3D from "../components/Model3D";
 
 function Home() {
   const nickName = localStorage.getItem("userNickname") || "gość";
@@ -28,7 +30,17 @@ function Home() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6 left-side animate__animated animate__fadeInLeft">
-            <div className="character-square">Character</div>
+            <div className="character-square">
+            <Canvas style={{ height: '400px', width: '100%' }}>
+            <ambientLight intensity={2} />
+            <directionalLight position={[0, 0, 5]} castShadow={true} intensity={2}/>
+            <directionalLight position={[0, 0, -5]} castShadow={true} intensity={1}/>
+            <directionalLight position={[0, 5, 1]} castShadow={true} intensity={2}/>
+            <mesh receiveShadow castShadow>
+          <Model3D />
+          </mesh>
+        </Canvas>
+            </div>
             <div className="skin-selector">
               <div className="skin-thumbnail">Skin 1</div>
               <div className="skin-thumbnail">Skin 2</div>
