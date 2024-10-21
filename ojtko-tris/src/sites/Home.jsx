@@ -1,12 +1,17 @@
 import "./../styles/Home.css";
 import "animate.css";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Canvas } from '@react-three/fiber';
 import Model3D from "../components/Model3D";
 
 function Home() {
   const nickName = localStorage.getItem("userNickname") || "gość";
+  const [modelPath, setModelPath] = useState('/pet.glb'); 
+
+  const handleSkinChange = (model) => {
+    setModelPath(model);
+  };
 
   return (
     <>
@@ -37,21 +42,20 @@ function Home() {
             <directionalLight position={[0, 0, -5]} castShadow={true} intensity={1}/>
             <directionalLight position={[0, 5, 1]} castShadow={true} intensity={2}/>
             <mesh receiveShadow castShadow>
-          <Model3D />
+          <Model3D modelPath={modelPath}/>
           </mesh>
         </Canvas>
             </div>
             <div className="skin-selector">
-              <div className="skin-thumbnail">Skin 1</div>
-              <div className="skin-thumbnail">Skin 2</div>
+              <div className="skin-thumbnail"
+              style={{ backgroundImage: "url('/kolko2.png')" }}
+              onClick={() => handleSkinChange('/kolko.glb')}>Skin 1</div>
+              <div className="skin-thumbnail" 
+              style={{ backgroundImage: "url('/krzyzyk.png')" }}
+              onClick={() => handleSkinChange('/krzyzyk.glb')}>Skin 2</div>
               <div className="skin-thumbnail">Skin 3</div>
               <div className="skin-thumbnail">Skin 4</div>
               <div className="skin-thumbnail">Skin 5</div>
-              <div className="skin-thumbnail">Skin 6</div>
-              <div className="skin-thumbnail">Skin 6</div>
-              <div className="skin-thumbnail">Skin 6</div>
-              <div className="skin-thumbnail">Skin 6</div>
-              <div className="skin-thumbnail">Skin 6</div>
               <div className="skin-thumbnail">Skin 6</div>
             </div>
           </div>

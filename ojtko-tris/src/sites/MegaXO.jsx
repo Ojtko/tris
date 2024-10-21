@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/MegaXO.css';
+
 
 function MegaXO() {
   const [boardSize, setBoardSize] = useState(5);

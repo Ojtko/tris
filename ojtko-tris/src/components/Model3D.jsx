@@ -3,8 +3,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useLoader } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
-function Model3D() {
-  const gltf = useLoader(GLTFLoader, '/kolko.glb');
+function Model3D({modelPath}) {
+  const gltf = useLoader(GLTFLoader, modelPath);
 
   
   return (
