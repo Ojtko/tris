@@ -6,7 +6,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  localStorage.clear();
+  // localStorage.clear();
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -24,7 +24,10 @@ function Login() {
         const data = await response.json();
         console.log(data);
         
-        localStorage.setItem('userNickname', data.user.nick);
+        localStorage.setItem('userId', data.user.id);
+        localStorage.setItem('userNick', data.user.nick);
+        localStorage.setItem('userExp', data.user.exp);
+        localStorage.setItem('userCredits', data.user.credits);
         
         navigate('/'); 
       } else {

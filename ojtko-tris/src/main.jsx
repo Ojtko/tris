@@ -6,6 +6,7 @@ import Register from "./sites/Register.jsx";
 import Mega from "./sites/MegaXO.jsx";
 import Timer from "./sites/TimerXO.jsx";
 import Normal from "./sites/NormalXO.jsx";
+import User from "./sites/User.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/index.css";
 
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="mega" element={<Mega />} />
         <Route path="timer" element={<Timer />} />
         <Route path="normal" element={<Normal />} />
+        <Route path="user" element={<User />} />
       </Routes>
     </Router>
   </StrictMode>

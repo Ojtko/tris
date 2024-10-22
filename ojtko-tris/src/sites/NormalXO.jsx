@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import './../styles/NormalXO.css';
+import { useNavigate } from 'react-router-dom'; // Dodaj import
 
 function NormalXO() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState('X');
   const [statusMessage, setStatusMessage] = useState("Player X's turn");
   const [gameOver, setGameOver] = useState(false);
+  const navigate = useNavigate(); // Użyj hooka useNavigate
+  const [userId, setUserId] = useState(localStorage.getItem('userId') || "0");
+  const [userExp, setUserExp] = useState(localStorage.getItem('userExp') || "0");
+  const [userCredits, setUserCredits] = useState(localStorage.getItem('userCredits') || "0");
 
   const xImage = '/petTop.png';
   const oImage = '/kolkoTop.png';
@@ -23,9 +28,47 @@ function NormalXO() {
     if (checkWin(updatedBoard)) {
       setStatusMessage(`Player ${currentPlayer} wins!`);
       setGameOver(true);
+
+      const newExp = parseInt(userExp) + 5;
+      const newCredits = parseInt(userCredits) + 10;
+
+      fetch('http://localhost:5000/updateUserData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userId,
+          exp: newExp,
+          credits: newCredits
+        }),
+      });
+
+      setTimeout(() => {
+        navigate('../');
+      }, 2000);
     } else if (updatedBoard.every(cell => cell !== null)) {
       setStatusMessage("It's a draw!");
       setGameOver(true);
+
+      const newExp = parseInt(userExp) + 3;
+      const newCredits = parseInt(userCredits) + 5;
+
+      fetch('http://localhost:5000/updateUserData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userId,
+          exp: newExp,
+          credits: newCredits
+        }),
+      });
+
+      setTimeout(() => {
+        navigate('../');
+      }, 2000);
     } else {
       const nextPlayer = currentPlayer === 'X' ? 'O' : 'X';
       setCurrentPlayer(nextPlayer);
@@ -44,13 +87,6 @@ function NormalXO() {
     );
   };
 
-  const resetGame = () => {
-    setBoard(Array(9).fill(null));
-    setCurrentPlayer('X');
-    setStatusMessage("Player X's turn");
-    setGameOver(false);
-  };
-
   return (
     <div className="tic-tac-toe-container">
       <h1>Classic Tic-Tac-Toe</h1>
@@ -67,7 +103,6 @@ function NormalXO() {
         ))}
       </div>
       <h2>{statusMessage}</h2>
-      <button className="reset-button" onClick={resetGame}>Reset Game</button>
     </div>
   );
 }
