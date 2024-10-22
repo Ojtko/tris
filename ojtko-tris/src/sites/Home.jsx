@@ -49,11 +49,13 @@ function Home() {
             <div className="skin-selector">
               <div className="skin-thumbnail"
               style={{ backgroundImage: "url('/kolko2.png')" }}
-              onClick={() => handleSkinChange('/kolko.glb')}>Skin 1</div>
+              onClick={() => handleSkinChange('/kolko.glb')}>&nbsp;</div>
               <div className="skin-thumbnail" 
               style={{ backgroundImage: "url('/krzyzyk.png')" }}
-              onClick={() => handleSkinChange('/krzyzyk.glb')}>Skin 2</div>
-              <div className="skin-thumbnail">Skin 3</div>
+              onClick={() => handleSkinChange('/krzyzyk.glb')}>&nbsp;</div>
+              <div className="skin-thumbnail"
+              style={{ backgroundImage: "url('/pet.png')" }}
+              onClick={() => handleSkinChange('/pet.glb')}>&nbsp;</div>
               <div className="skin-thumbnail">Skin 4</div>
               <div className="skin-thumbnail">Skin 5</div>
               <div className="skin-thumbnail">Skin 6</div>

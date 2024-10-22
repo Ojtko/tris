@@ -71,9 +71,9 @@ body {
   background-color: #333;
   text-align: center;
   line-height: 100px;
-  background-size: cover; /* Dopasowanie obrazu */
-    background-position: center; /* Wyśrodkowanie obrazu */
-    background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
   font-size: 14px;
   border-radius: 5px;
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;

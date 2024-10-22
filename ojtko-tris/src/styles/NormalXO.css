@@ -12,24 +12,29 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
-  width: 180px;
+  width: 450px;
   margin: 20px 0;
 }
 
 .cell {
-  width: 60px;
-  height: 60px;
+  width: 150px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
-  border: 2px solid #333;
+  background-color: #3b3b3b;
+  /* border: 2px solid #000000; */
   font-size: 24px;
   cursor: pointer;
 }
+.cell img.xo-image {
+  width: 100%; /* Obraz zajmuje całą komórkę */
+  height: 100%; /* Dopasowanie wysokości */
+  object-fit: contain; /* Zachowanie proporcji obrazu */
+}
 
 .cell:hover {
-  background-color: #ddd;
+  background-color: #636363;
 }
 
 .reset-button {

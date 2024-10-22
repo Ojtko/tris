@@ -7,6 +7,9 @@ function NormalXO() {
   const [statusMessage, setStatusMessage] = useState("Player X's turn");
   const [gameOver, setGameOver] = useState(false);
 
+  const xImage = '/petTop.png';
+  const oImage = '/kolkoTop.png';
+
   const handleClick = (index) => {
     if (board[index] || gameOver) {
       return;
@@ -58,7 +61,8 @@ function NormalXO() {
             className="cell" 
             onClick={() => handleClick(index)}
           >
-            {cell}
+            {cell === 'X' && <img src={xImage} alt="X" className="xo-image" />}
+            {cell === 'O' && <img src={oImage} alt="O" className="xo-image" />}
           </div>
         ))}
       </div>
