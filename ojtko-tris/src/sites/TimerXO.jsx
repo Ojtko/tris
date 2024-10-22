@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom'; // Make sure to import useNavigate
 import './../styles/TimerXO.css';
 
 function TimerXO() {
@@ -9,6 +10,12 @@ function TimerXO() {
   const [moveTimeLimit, setMoveTimeLimit] = useState(3000);
   const [timeLeft, setTimeLeft] = useState(moveTimeLimit / 1000);
   const [timerId, setTimerId] = useState(null);
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState(localStorage.getItem('userId') || "0");
+  const [userExp, setUserExp] = useState(localStorage.getItem('userExp') || "0");
+  const [userCredits, setUserCredits] = useState(localStorage.getItem('userCredits') || "0");
+  let location = useLocation();
+  const { currentX, currentO } = location.state || { currentX: '/krzyzykTop.png', currentO: '/kolkoTop.png' };
 
   useEffect(() => {
     if (gameActive && timeLeft > 0) {
@@ -16,7 +23,7 @@ function TimerXO() {
         setTimeLeft(prevTimeLeft => prevTimeLeft - 0.1);
       }, 100);
       setTimerId(intervalId);
-      return () => clearInterval(intervalId);
+      return () => clearInterval(intervalId); // Clear interval when unmounting
     } else if (timeLeft <= 0 && gameActive) {
       setStatusMessage('Time is up! Skipping turn...');
       switchPlayer();
@@ -43,20 +50,63 @@ function TimerXO() {
     if (checkWin(row, col, updatedBoard)) {
       setStatusMessage(`Player ${currentPlayer} wins!`);
       setGameActive(false);
-      clearInterval(timerId);
+      clearInterval(timerId); // Clear the timer on win
+
+      const newExp = parseInt(userExp) + 5;
+      const newCredits = parseInt(userCredits) + 25;
+
+      fetch('http://localhost:5000/updateUserData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userId,
+          exp: newExp,
+          credits: newCredits
+        }),
+      });
+
+      setTimeout(() => {
+        navigate('../');
+      }, 2000);
+
     } else if (isBoardFull(updatedBoard)) {
       setStatusMessage('It\'s a draw!');
       setGameActive(false);
-      clearInterval(timerId);
+      clearInterval(timerId); // Clear the timer on draw
+
+      const newExp = parseInt(userExp) + 4;
+      const newCredits = parseInt(userCredits) + 20;
+
+      fetch('http://localhost:5000/updateUserData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: userId,
+          exp: newExp,
+          credits: newCredits
+        }),
+      });
+
+      setTimeout(() => {
+        navigate('../');
+      }, 2000);
     } else {
-      switchPlayer();
+      switchPlayer(); // Switch player if no win or draw
     }
   };
 
   const switchPlayer = () => {
-    setCurrentPlayer(prevPlayer => (prevPlayer === 'X' ? 'O' : 'X'));
-    setStatusMessage(`Player ${currentPlayer === 'X' ? 'O' : 'X'}'s turn`);
-    setTimeLeft(moveTimeLimit / 1000);
+    clearInterval(timerId); // Clear the timer on player switch
+    setCurrentPlayer(prevPlayer => {
+      const nextPlayer = prevPlayer === 'X' ? 'O' : 'X';
+      setStatusMessage(`Player ${nextPlayer}'s turn`);
+      setTimeLeft(moveTimeLimit / 1000); // Reset time for the next player
+      return nextPlayer; // Return the next player
+    });
   };
 
   const checkWin = (row, col, updatedBoard) => {
@@ -123,7 +173,8 @@ function TimerXO() {
                 className={`cell ${cell ? 'disabled' : ''}`}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
               >
-                {cell}
+                {cell === 'X' && <img src={currentX} alt="X" className="xo-image" />}
+                {cell === 'O' && <img src={currentO} alt="O" className="xo-image" />}
               </div>
             ))
           )}

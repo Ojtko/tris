@@ -81,7 +81,7 @@ body {
 .skin-thumbnail:hover {
   background-color: #3d3d3d;
   transform: scale(1.05); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /
 }
 .skin-selector::-webkit-scrollbar {
   height: 8px;
@@ -108,15 +108,24 @@ body {
   color: #ddd;
   font-size: 18px;
   margin: 10px;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
-.box:hover{
-  background-color: #3d3d3d;
-  transform: scale(1.05); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.progress-container {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.selected{
-  background-color: #3d3d3d;
-  transform: scale(1.05); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+.progress-bar {
+  height: 30px;
+  background-color: #4caf50;
+  width: 0;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  transition: width 0.4s ease;
 }
