@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import './../styles/NormalXO.css';
+import { useLocation } from 'react-router-dom';
 
 function NormalXO() {
+  let location = useLocation();
+  console.log("location: ", location);
+  const { currentX, currentO } = location.state || { currentX: '/krzyzykTop2.png', currentO: '/kolkoTop.png' };
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState('X');
   const [statusMessage, setStatusMessage] = useState("Player X's turn");
   const [gameOver, setGameOver] = useState(false);
+  
 
-  const xImage = '/petTop.png';
-  const oImage = '/kolkoTop.png';
+  const xImage = currentX;
+  const oImage = currentO;
+  console.log("O: ", xImage);
+  console.log("X: ", oImage);
+  
 
   const handleClick = (index) => {
     if (board[index] || gameOver) {
@@ -61,8 +69,8 @@ function NormalXO() {
             className="cell" 
             onClick={() => handleClick(index)}
           >
-            {cell === 'X' && <img src={xImage} alt="X" className="xo-image" />}
-            {cell === 'O' && <img src={oImage} alt="O" className="xo-image" />}
+            {cell === 'X' && <img src={currentX} alt="X" className="xo-image" />}
+            {cell === 'O' && <img src={currentO} alt="O" className="xo-image" />}
           </div>
         ))}
       </div>

@@ -1,6 +1,7 @@
 import "./../styles/Home.css";
 import "animate.css";
-import React, { useState } from "react";
+import classNames from 'classnames';
+import React, { useState , useRef} from "react";
 import { Link } from "react-router-dom";
 import { Canvas } from '@react-three/fiber';
 import Model3D from "../components/Model3D";
@@ -8,10 +9,23 @@ import Model3D from "../components/Model3D";
 function Home() {
   const nickName = localStorage.getItem("userNickname") || "gość";
   const [modelPath, setModelPath] = useState('/pet.glb'); 
+  const [currentO, setCurrentO] = useState('/kolkoTop.png'); 
+  const [currentX, setCurrentX] = useState('/krzyzykTop2.png');
+
 
   const handleSkinChange = (model) => {
     setModelPath(model);
   };
+  const handleO = (path) =>{
+    setCurrentO(path);
+    console.log(path);
+    console.log(currentO);
+  }
+  const handleX = (path) =>{
+    setCurrentX(path);
+    console.log(path);
+    console.log(currentX);
+  }
 
   return (
     <>
@@ -47,45 +61,33 @@ function Home() {
         </Canvas>
             </div>
             <div className="skin-selector">
-              <div className="skin-thumbnail"
+              <div className="skin-thumbnail O"
               style={{ backgroundImage: "url('/kolko2.png')" }}
-              onClick={() => handleSkinChange('/kolko.glb')}>&nbsp;</div>
-              <div className="skin-thumbnail" 
+              onClick={() => {handleSkinChange('/kolko.glb');handleO('/kolkoTop.png');}}
+              >&nbsp;</div>
+              <div className="skin-thumbnail X" 
               style={{ backgroundImage: "url('/krzyzyk.png')" }}
-              onClick={() => handleSkinChange('/krzyzyk.glb')}>&nbsp;</div>
-              <div className="skin-thumbnail"
+              onClick={() => {handleSkinChange('/krzyzyk.glb'); handleX('/krzyzykTop2.png');}}>&nbsp;</div>
+              <div className="skin-thumbnail X"
               style={{ backgroundImage: "url('/pet.png')" }}
-              onClick={() => handleSkinChange('/pet.glb')}>&nbsp;</div>
+              onClick={() => {handleSkinChange('/pet.glb'); handleX('/petTop.png');}}>&nbsp;</div>
               <div className="skin-thumbnail">Skin 4</div>
               <div className="skin-thumbnail">Skin 5</div>
               <div className="skin-thumbnail">Skin 6</div>
             </div>
           </div>
           <div className="col-md-6 right-side animate__animated animate__fadeInRight">
-            <Link to="/normal">
-              {" "}
+          <Link
+            to={"/normal"}
+            state={{currentX: currentX,
+              currentO: currentO,}}>
               <div className="box">Normal</div>
             </Link>
-            <Link to="/normal">
+            <Link to="/mega">
               {" "}
-              <div className="box">Normal</div>
+              <div className="box">Mega</div>
             </Link>
-            <Link to="/normal">
-              {" "}
-              <div className="box">Normal</div>
-            </Link>
-            <Link to="/normal">
-              {" "}
-              <div className="box">Normal</div>
-            </Link>
-            <Link to="/normal">
-              {" "}
-              <div className="box">Normal</div>
-            </Link>
-            <Link to="/normal">
-              {" "}
-              <div className="box">Normal</div>
-            </Link>
+            
           </div>
         </div>
       </div>
